@@ -30,6 +30,7 @@ spec:
             - production
 
   steps:
+  #En este paso se hace el cambio de las variables.
     - id: fetch-base
       name: Fetch Base
       action: fetch:template
