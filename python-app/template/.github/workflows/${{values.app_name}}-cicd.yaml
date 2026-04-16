@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           push: true
-          tags: stivenparada/${{ values.app_name }}:${{ '${{ env.COMMIT_ID }}' }}
+          tags: stivenparada/${{ values.app_name }}:${{values.app_name}}-${{values.app_env}}-latest
     outputs: 
       commit_id: ${{ '${{ env.COMMIT_ID }}' }}
   cd:
@@ -39,12 +39,12 @@ jobs:
     steps:
       -
         uses: actions/checkout@v3
-      -
-        name: modificar values file
-        shell: bash
-        run: |
-          echo ${{ '${{ needs.ci.outputs.commit_id }}' }}
-          sed -i "s/tag: .*/tag: \"${{ '${{ needs.ci.outputs.commit_id }}' }}\"/g" charts/${{ values.app_name }}/values-${{ values.app_env }}.yaml
+      #-
+        # name: modificar values file
+        #shell: bash
+        # run: |
+        #  echo ${{ '${{ needs.ci.outputs.commit_id }}' }}
+        #  sed -i "s/tag: .*/tag: \"${{ '${{ needs.ci.outputs.commit_id }}' }}\"/g" charts/${{ values.app_name }}/values-${{ values.app_env }}.yaml
       -
         name: commit changes
         uses: EndBug/add-and-commit@v9
