@@ -64,6 +64,15 @@ jobs:
           # 4. Prueba final: imprimir la versión
           argocd version --client
       -
+        name: argocd login
+        shell: bash
+        run: | 
+          argocd login argocd-server.argocd \
+            --insecure \
+            --grpc-web \
+            --username admin \
+            --password ${{ '${{ secrets.ARGOCD_PASSWORD }}' }}
+      -
         name: argocd create repo
         shell: bash
         run: | 
