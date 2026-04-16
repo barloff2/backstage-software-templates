@@ -44,7 +44,7 @@ jobs:
         shell: bash
         run: |
           echo ${{ '${{ needs.ci.outputs.commit_id }}' }}
-          sed -i "s/tag: .*/tag: \"${{ '${{ needs.ci.outputs.commit_id }}' }}\"/g" charts/${{ values.app_name }}/values-${{ values.app_name }}.yaml
+          sed -i "s/tag: .*/tag: \"${{ '${{ needs.ci.outputs.commit_id }}' }}\"/g" charts/${{ values.app_name }}/values-${{ values.app_env }}.yaml
       -
         name: commit changes
         uses: EndBug/add-and-commit@v9
