@@ -57,12 +57,6 @@ jobs:
           # 1. Descarga con -L (seguir redirecciones) y -f (fallar si no existe)
           curl -sSLf -o argocd https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
           
-          # 2. Verificar si el archivo tiene tamaño (si bajó algo)
-          if [ ! -s argocd ]; then
-            echo "ERROR: El archivo argocd está vacío o no se descargó"
-            exit 1
-          fi
-          
           # 3. Dar permisos y mover
           chmod +x argocd
           sudo mv ./argocd /usr/bin/argocd
